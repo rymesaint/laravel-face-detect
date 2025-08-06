@@ -1,16 +1,12 @@
-<?php namespace Softon\LaravelFaceDetect;
+<?php
+
+namespace Softon\LaravelFaceDetect;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
-class FaceDetectServiceProvider extends ServiceProvider {
-
-	/**
-	 * Indicates if loading of the provider is deferred.
-	 *
-	 * @var bool
-	 */
-	protected $defer = false;
+class FaceDetectServiceProvider extends ServiceProvider
+{
 
 	/**
 	 * Register the service provider.
@@ -19,16 +15,16 @@ class FaceDetectServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-        $this->app->bind('FaceDetect', '\Softon\LaravelFaceDetect\FaceDetect');
-        
+		$this->app->bind('FaceDetect', '\Softon\LaravelFaceDetect\FaceDetect');
 	}
 
 
-    public function boot(){
+	public function boot()
+	{
 		$this->publishes([
-				__DIR__.'/config/config.php' => base_path('config/facedetect.php'),
+			__DIR__ . '/config/config.php' => config_path('config/facedetect.php'),
 		]);
-    }
+	}
 
 	/**
 	 * Get the services provided by the provider.
@@ -37,9 +33,6 @@ class FaceDetectServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return [
-
-        ];
+		return [];
 	}
-
 }
